@@ -2,25 +2,25 @@
 
 // hint: you can change the style of an element by modifying the value of that element's .style.fontSize, or by updating its .classList.
 
-document.addEventListener("DOMContentLoaded", () => {
-  const submitButton = document.getElementById("submit-button");
-  const contactPage = document.getElementById("contact-page");
-  const emailInput = document.getElementById("user-email");
-  const title = document.querySelector(".nav-title");
+document.addEventListener("DOMContentLoaded", function() {
+  var submitButton = document.getElementById("submit-button");
+  var contactPage = document.getElementById("contact-page");
+  var emailInput = document.getElementById("user-email");
+  var title = document.querySelector(".nav-title");
 
-  submitButton.addEventListener("click", (event) => {
+  submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    const emailValue = emailInput.value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var emailValue = emailInput.value.trim();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const existingError = document.getElementById("email-error");
+    var existingError = document.getElementById("email-error");
     if (existingError) {
       existingError.remove();
     }
 
     if (!emailPattern.test(emailValue)) {
-      const errorMessage = document.createElement("p");
+      var errorMessage = document.createElement("p");
       errorMessage.id = "email-error";
       errorMessage.textContent = "Please enter a valid email address.";
       errorMessage.style.color = "red";
@@ -31,18 +31,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Replace page contents with thank-you message
     contactPage.innerHTML = "";
-    const thankYouMessage = document.createElement("p");
+    var thankYouMessage = document.createElement("p");
     thankYouMessage.textContent = "Thank you for your message";
     thankYouMessage.style.fontSize = "24px";
     contactPage.appendChild(thankYouMessage);
 
     // Add Back to Home button
-    const homeButton = document.createElement("button");
+    var homeButton = document.createElement("button");
     homeButton.textContent = "Back to Home";
     homeButton.classList.add("fake-button"); 
     homeButton.style.marginTop = "16px";
 
-    homeButton.addEventListener("click", () => {
+    homeButton.addEventListener("click", function() {
       window.location.href = "../index.html";
     });
 
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Nav-title home link
   if (title) {
     title.style.cursor = "pointer";
-    title.addEventListener("click", () => {
+    title.addEventListener("click", function() {
       window.location.href = "../index.html";
     });
   }
